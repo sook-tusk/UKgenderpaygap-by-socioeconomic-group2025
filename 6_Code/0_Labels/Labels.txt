@@ -1,0 +1,71 @@
+Men
+Women
+Difference
+Measured Female 'Residual'
+Full-time years
+Full-time years squared
+Part-time years
+Part-time years squared
+Unpaid family care years
+Parental Leave years
+Unemployment years
+Illness years
+Majority Female Occupation (>70% female)
+Majority Male Occupation (> 70% male)
+Public Sector
+Union member
+Bonus receipt
+GCSE/equivalent
+A-level
+Degree or higher
+Presence of children aged 0-4 in HH
+Presence of children aged 5-15 in HH
+Ethnic minority
+North East
+North West
+Yorkshire & Humber
+East Midlands
+West Midlands
+East of England
+London
+South East
+Wales
+Scotland
+Northern Ireland
+SIC0: Agriculture,forestry & fishing
+SIC1: Mining,energy and water supply
+SIC2: Manufacturing
+SIC3: Construction
+SIC4: Wholesale,retail & repair of motor vehicles
+SIC5: Transport & storage
+SIC6: Accommodation & food services
+SIC7: Information & communication
+SIC8: Finance & insurance activities
+SIC9: Real estate activities
+SIC10: Professional, scientific & technical activities
+SIC11: Administrative & support services
+SIC12: Public admin & defence; social security
+SIC13: Education
+SIC14: Health & social work activities
+Small (10-49 employees)
+Medium (50-199 employees)
+Large (200+ employees)
+Overtime work
+Tenure over 4 years
+Tenure less than a year
+Temporary work
+Part-time yrs*Female
+Part-time yrs sq*Female
+In Union*Female
+Bonus Receipt*Female
+Unobserved Residuals
+Cumulative Work History in Years
+Full-time
+Part-time
+Key Work Indicators
+Occupational sex-segregation
+Education
+Presence of children
+Region
+Industry
+Firm size
