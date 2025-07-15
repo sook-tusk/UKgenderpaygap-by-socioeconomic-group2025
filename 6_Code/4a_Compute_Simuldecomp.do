@@ -1,5 +1,5 @@
 
-* Last updated on 27 June 2025
+* Last updated on 15 July 2025
 
 *********************************************
 * This analysis file replicates results in
@@ -21,7 +21,7 @@ macro drop _all
 // view browse file:///$gpgsocioecnomicgrp/5_Output/3_Simdecomp/SimDecom.html
 
 *-------------------------------------
-cdgpgsocioeconomicgrp
+cd
 
 do "./6_Code/2a_Regression.do"
 tab retrodata   /* kept retrodata only */
@@ -47,7 +47,7 @@ global x female  ///
 *****>  M4: RUN simdecomp  *****
 *==========================================
 //M4
-cdgpgsocioeconomicgrp
+cd
 do "./6_Code/4b_OPTIONAL_simdecomp_prep.do"
 
 mat list simdecomp
@@ -76,7 +76,6 @@ mat colnames simdecomp_m5 = Men4 Women4 xdiff4 b4 ///
 ***** > Get labels  *****
 *==========================================
 
-cdgpgsocioeconomicgrp
 import delimited "6_Code/0_Labels/Labels.txt", delimiter(tab) clear
 gen seq = _n
 save  "5_Output/3_Simdecomp/Labels.dta", replace
@@ -91,7 +90,7 @@ mat list simdecomp_m4
 mat list simdecomp_m5
 
 //save matrix to Stata file.
-cdgpgsocioeconomicgrp
+cd
 cd ./5_Output/3_Simdecomp
 capture erase simdecomp_m4.dta
 capture erase simdecomp_m5.dta
@@ -101,8 +100,6 @@ svmatf, mat(simdecomp_m5) fil(simdecomp_m5.dta)
 *====================================
 * Merge Simdecom
 *====================================
-cdgpgsocioeconomicgrp
-cd ./5_Output/3_Simdecomp
 
 use "simdecomp_m4", clear
 set obs 61
@@ -133,8 +130,9 @@ order row seq *1 *2 *3 *4 *5 , first
 *====================================
 * > Merge Labels, heading
 *====================================
-cdgpgsocioeconomicgrp
-merge 1:1 seq using "5_Output/3_Simdecomp/Labels.dta"
+cd
+
+merge 1:1 seq using "Labels.dta"
 replace v1 = trim(v1)
 order v1, first
 
@@ -318,16 +316,16 @@ replace v1 =  "Measured Female 'Residual' (d)" ///
 *> Save
 *====================================
 
-cdgpgsocioeconomicgrp
-save "./5_Output/3_Simdecomp/SimDecom_messy", replace
-use  "./5_Output/3_Simdecomp/SimDecom_messy", replace
+cd
+
+save "SimDecom_messy", replace
+use  "SimDecom_messy", replace
 
 
 *====================================
 *> export to Html (for inspection only)
 *====================================
-cdgpgsocioeconomicgrp
-cd ./5_Output/3_Simdecomp
+
 format xb1 xb4 xb5 xb6 %4.3f
 global logfile "SimDecom"
 set linesize 200
@@ -348,8 +346,7 @@ view browse file:///$gpgsocioecnomicgrp/5_Output/3_Simdecomp/SimDecom.html
 *====================================
 *> export to Excel (for inspection only)
 *====================================
-cdgpgsocioeconomicgrp
-cd ./5_Output/3_Simdecomp
+
 global simdecom "SimDecom_M4all_M5all"
 
 export excel catgrp v1 xb1 p1 xb2 p2 xb3 p3 ///
@@ -366,21 +363,28 @@ winexec "$excel" "$simdecom.xls"
 *====================================
 *> export to Word, M4 mean only
 *====================================
-cdgpgsocioeconomicgrp
-use  "./5_Output/3_Simdecomp/SimDecom_messy", replace
+
+use  "SimDecom_messy", replace
 
 /* drop interactions*/
 drop if row=="partyearsF" | row == "partyears2F" | ///
         row == "inunionF" | row == "bonusF"
 keep seq catgrp v1  row *1 *2 *3
 drop xdiff* gsum* p_*
-save "./5_Output/3_Simdecomp/SimDecom_tidy_M4", replace
-use  "./5_Output/3_Simdecomp/SimDecom_tidy_M4", replace
+save "SimDecom_tidy_M4", replace
+use  "SimDecom_tidy_M4", replace
 
+*-------------------------------------
+** > Back to the proj folder
+*-------------------------------------
+cd ../../
+cd
+
+*-------------------------------------
+** > export to Word
+*-------------------------------------
 //*mean only
-cdgpgsocioeconomicgrp
-cd ./5_Output/4_Word
-global asdoctable1 "Table_A6_SimDecom_M4"
+global asdoctable1 "5_Output/4_Word/Table_A6_SimDecom_M4"
 
 asdoc list v1  Men1 Women1 b1 xb1 p1, replace ///
   save($asdoctable1) font(Times) fs(10)  ///
@@ -391,12 +395,10 @@ winexec "$word" "$asdoctable1.doc"
 *====================================
 *> export to Word, M4 all
 *====================================
-cdgpgsocioeconomicgrp
+
 use  "./5_Output/3_Simdecomp/SimDecom_tidy_M4", replace
 
-cdgpgsocioeconomicgrp
-cd ./5_Output/4_Word
-global asdoctable2 "Table_4_SimDecom_M4_all"
+global asdoctable2 "5_Output/4_Word/Table_4_SimDecom_M4_all"
 
 // title(Table 4. Simulation decomposition of the Gender Pay Gap at the Mean and by Household Type (M4))
 asdoc list v1 xb1 p1 xb2 p2 xb3 p3, replace ///
@@ -405,11 +407,6 @@ asdoc list v1 xb1 p1 xb2 p2 xb3 p3, replace ///
 
 winexec "$word" "$asdoctable2.doc"
 
-
-*====================================
-*> tidy
-*====================================
-//Back to the proj folder
-cdgpgsocioeconomicgrp
+cd
 
 /* End */

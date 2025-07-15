@@ -1,5 +1,5 @@
 
-* Last updated on 27 June 2025
+* Last updated on 15 July 2025
 
 *********************************************
 * This analysis file replicates results in
@@ -13,34 +13,26 @@ di "Gash, V., Olsen, W., Kim, S., & Zwiener-Collins, N. (2025). Decomposing the 
 * To be run once to create subfolders.
 * Once installed, no need to run again.
 
-cdgpgsocioeconomicgrp
+cd
 
 capture mkdir 5_Output
 
-capture cd ./5_Output
+capture mkdir 5_Output/2_Desc_Tables
 
-capture mkdir 2_Desc_Tables
+capture mkdir 5_Output/3_Reg_decomp_html_csv
+capture mkdir 5_Output/3_Reg_decomp_html_csv/html
 
-capture mkdir 3_Reg_decomp_html_csv
-capture mkdir 3_Reg_decomp_html_csv/html
+capture mkdir 5_Output/3_Simdecomp
+capture mkdir 5_Output/4_Figures
 
-capture mkdir 3_Simdecomp
-capture mkdir 4_Figures
-
-capture mkdir 4_Word
-capture mkdir 4_Word/Regression
+capture mkdir 5_Output/4_Word
+capture mkdir 5_Output/4_Word/Regression
 
 *------------------------------
 * Check
 *------------------------------
 cd
 dir
-
-*------------------------------
-* Return to the proj folder
-*------------------------------
-
-cdgpgsocioeconomicgrp
 
 
 ****  End ****

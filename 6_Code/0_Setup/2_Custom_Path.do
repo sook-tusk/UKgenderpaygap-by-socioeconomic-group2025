@@ -1,5 +1,5 @@
 
-* Last updated on 27 June 2025
+* Last updated on 15 July 2025
 
 *********************************************
 * This analysis file replicates results in
@@ -15,6 +15,7 @@ di "Gash, V., Olsen, W., Kim, S., & Zwiener-Collins, N. (2025). Decomposing the 
 *------------------------------
 
 // Starting path (CUSTOMISE THIS PLEASE)
+
 global startingpath "F:/yourpath/Research"
 
 
@@ -22,24 +23,15 @@ global startingpath "F:/yourpath/Research"
 * Declare the project path (USE AS IT IS)
 *------------------------------
 
-global folder  ///
- "UKgenderpaygap-by-socioeconomic-group2025"
+global gpgsocioeconomicgrp  ///
+ "$startingpath/UKgenderpaygap-by-socioeconomic-group2025"
 
-global gpgsocioeconomicgrp "$startingpath/$folder"
-
-cd "$startingpath/$folder"
-
-*------------------------------
-* > Save (user-specific) project path.
-* The workingdir must be installed.
-*------------------------------
-
-savecd gpgsocioeconomicgrp, replace
 
 *------------------------------
 * > Jump to the current project
 *------------------------------
-cdgpgsocioeconomicgrp
+
+cd $gpgsocioeconomicgrp
 
 // Check
 pwd

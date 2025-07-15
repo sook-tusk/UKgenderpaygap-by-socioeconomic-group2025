@@ -1,5 +1,5 @@
 
-* Last updated on 27 June 2025
+* Last updated on 15 July 2025
 
 *********************************************
 * This analysis file replicates results in
@@ -10,7 +10,6 @@ di "Gash, V., Olsen, W., Kim, S., & Zwiener-Collins, N. (2025). Decomposing the 
 
 *********************************************
 
-cdgpgsocioeconomicgrp
 do "./6_Code/0_Setup/2_Custom_Path.do"
 
 *====================================
@@ -18,7 +17,6 @@ do "./6_Code/0_Setup/2_Custom_Path.do"
 //FOR PUBLICATION TABLES, SEE NEXT FILE.
 *====================================
 
-cdgpgsocioeconomicgrp
 use "./7_Input/Readonly/Cleaned.dta", clear
 
 **> TABLE 2 Prep - **

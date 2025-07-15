@@ -1,5 +1,5 @@
 
-* Last updated on 27 June 2025
+* Last updated on 15 July 2025
 
 *********************************************
 * This analysis file replicates results in
@@ -13,28 +13,30 @@ di "Gash, V., Olsen, W., Kim, S., & Zwiener-Collins, N. (2025). Decomposing the 
 // This file runs all previous main do files
 // in the given sequence.
 
-cdgpgsocioeconomicgrp
-cd ./6_Code
+cd
 
 * check the list of Do files first to run
-	dir
+dir ./6_Code/
 
 * Run all main do files to replicate
-    cdgpgsocioeconomicgrp
+
 do "6_Code/1_EarningsDecile.do"
+cd
 
-    cdgpgsocioeconomicgrp
 do "6_Code/2a_Regression.do"
-    cdgpgsocioeconomicgrp
+cd
+
 do "6_Code/2b_Table_Reg.do"
+cd
 
-    cdgpgsocioeconomicgrp
+
 do "6_Code/3a_OaxacaDecom.do"
-    cdgpgsocioeconomicgrp
+cd
+
 do "6_Code/3b_Table_OaxacaDecom.do"
+cd
 
-    cdgpgsocioeconomicgrp
 do "6_Code/4a_Compute_Simuldecomp.do"
-
+cd
 
 /* End of -----Master_RUN_ALL----- */

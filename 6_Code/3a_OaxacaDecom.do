@@ -1,5 +1,5 @@
 
-* Last updated on 27 June 2025
+* Last updated on 15 July 2025
 
 *********************************************
 * This analysis file replicates results in
@@ -13,7 +13,7 @@ di "Gash, V., Olsen, W., Kim, S., & Zwiener-Collins, N. (2025). Decomposing the 
 *============================================
 * > Run earlier 0_Regression_Prep.do
 *============================================
-cdgpgsocioeconomicgrp
+
 do "./6_Code/2a_Regression.do"
 di _N
 
@@ -104,9 +104,14 @@ eststo decomM4rich_grp2: oaxaca lnhourlyrealpay ///
   svy weight(0) by(sex) noisily relax $grouping2
 
 *-------------------------------------
-** > Intermediate outputs in html
+** > Change the path
 *-------------------------------------
 cd ./5_Output/3_Reg_decomp_html_csv
+
+*-------------------------------------
+** > Intermediate outputs in html
+*-------------------------------------
+
 esttab decom_M4 decom_M4_poor decom_M4_rich ///
  using "TableA4_Oaxaca_decom_M4.html", replace ///
  wide b(3) se label nodepvars varwidth(55)
@@ -138,5 +143,11 @@ cls
 esttab decom_M4_grp2 decomM4poor_grp2 decomM4rich_grp2 ///
  using "TableA4_OaxacadecomM4_grp2.csv", replace  ///
   wide b(3) se nodepvars varwidth(55)
+
+*-------------------------------------
+** > Back to the proj folder
+*-------------------------------------
+cd ../../
+cd
 
 /* End */

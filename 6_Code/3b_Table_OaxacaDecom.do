@@ -1,5 +1,5 @@
 
-* Last updated on 27 June 2025
+* Last updated on 15 July 2025
 
 *********************************************
 * This analysis file replicates results in
@@ -21,14 +21,15 @@ view browse file:///$gpgsocioecnomicgrp/5_Output/3_Reg_decomp_html_csv/Table2and
 view browse file:///$gpgsocioecnomicgrp/5_Output/3_Reg_decomp_html_csv/TableA4_Oaxaca_decom_M4.html
 *====================================
 
-cdgpgsocioeconomicgrp
+cd
 do "./6_Code/3a_OaxacaDecom.do"
 
 ** Ensure where unexplained starts.
 ** read in and edit in Stata.
 
-cdgpgsocioeconomicgrp
+cd
 cd ./5_Output/3_Reg_decomp_html_csv
+
 insheet using "TableA4_Oaxaca_decom_M4.csv", clear
 replace v1 = trim(v1)
 
@@ -255,20 +256,23 @@ dir
 *====================================
 *> Save
 *====================================
-cdgpgsocioeconomicgrp
-cd ./5_Output/3_Reg_decomp_html_csv
+cd       //3_Reg_decomp_html_csv
+
 save "Oaxaca_decom_table", replace
-use "Oaxaca_decom_table", clear
+use  "Oaxaca_decom_table", clear
+
+*-------------------------------------
+** > Back to the proj folder
+*-------------------------------------
+cd ../../
+cd
 
 *====================================
 *> export to Word
 *====================================
 drop if inlist(_n, 1, 2)
 
-cdgpgsocioeconomicgrp
-cd ./5_Output/4_Word
-
-global asdoctable1 "Table_A4_OaxacaDecom_A"
+global asdoctable1 "5_Output/4_Word/Table_A4_OaxacaDecom_A"
 
 asdoc list v1 a1 _a1 b1 _b1 t_effect1 p1, replace ///
   save($asdoctable1)  font(Times) fs(10)  ///
@@ -276,12 +280,14 @@ asdoc list v1 a1 _a1 b1 _b1 t_effect1 p1, replace ///
 
 winexec "$word" "$asdoctable1.doc"
 
-global asdoctable2 "Table_A5_OaxacaDecom_B"
+global asdoctable2 "5_Output/4_Word/Table_A5_OaxacaDecom_B"
 asdoc list v1 a2 _a2 b2 _b2 t_effect2 p2 ///
 a3 _a3 b3 _b3 t_effect3 p3, replace ///
   save($asdoctable2)  font(Times) fs(10)  ///
   title(Table A5. KOB decomposition of the Gender Pay Gap by Household Type)
 
 winexec "$word" "$asdoctable2.doc"
+
+cd
 
 /* End */

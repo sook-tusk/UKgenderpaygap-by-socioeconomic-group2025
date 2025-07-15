@@ -1,5 +1,5 @@
 
-* Last updated on 27 June 2025
+* Last updated on 15 July 2025
 
 *********************************************
 * This analysis file replicates results in
@@ -40,9 +40,9 @@ sysdir set PERSONAL "C:\Installed_PG\Stata18\ado\personal"
 * move directories easily
 *-------------------------------------
 
-// search workingdir
-net describe workingdir, from(https://jslsoc.sitehost.iu.edu/stata)
-net install workingdir
+// // search workingdir
+// net describe workingdir, from(https://jslsoc.sitehost.iu.edu/stata)
+// net install workingdir
 
 *-------------------------------------
 * KOB (oaxaca decomposition)
