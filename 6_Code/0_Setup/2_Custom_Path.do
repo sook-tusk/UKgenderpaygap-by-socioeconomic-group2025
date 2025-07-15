@@ -16,8 +16,7 @@ di "Gash, V., Olsen, W., Kim, S., & Zwiener-Collins, N. (2025). Decomposing the 
 
 // Starting path (CUSTOMISE THIS PLEASE)
 
-global startingpath "F:/yourpath/Research"
-
+// global startingpath "F:/yourpath/Research"
 
 *------------------------------
 * Declare the project path (USE AS IT IS)

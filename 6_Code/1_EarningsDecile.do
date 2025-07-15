@@ -9,15 +9,12 @@
 di "Gash, V., Olsen, W., Kim, S., & Zwiener-Collins, N. (2025). Decomposing the barriers to equal pay: Examining differential predictors of the gender pay gap by socio-economic group. Cambridge Journal of Economics, 1–23. https://doi.org/10.1093/cje/beaf025"
 
 *********************************************
+cd
 
 clear
 set more off
 capture log close
 
-cdgpgsocioeconomicgrp   /* Go to proj directory */
-pwd
-
-cdgpgsocioeconomicgrp
 do "./6_Code/0_Setup/2_Custom_Path.do"
 
 // Relative path
@@ -75,19 +72,24 @@ mat list paydecile
 
 *--------------------------------
 //save matrix to Stata file.
-cdgpgsocioeconomicgrp
+cd
+
 cd ./5_Output/2_Desc_Tables
 
 capture erase pay_deciles_bygender.dta
 svmatf, mat(paydecile) fil(pay_deciles_bygender.dta)
 
+*-------------------------------------
+** > Back to the proj folder
+*-------------------------------------
+cd ../../
+cd
+
 *=================================
 ** > Visualisation prep
 *=================================
-cdgpgsocioeconomicgrp
-cd ./5_Output/2_Desc_Tables
 
-use pay_deciles_bygender, clear //check
+use 5_Output/2_Desc_Tables/pay_deciles_bygender, clear
 
 
 *-----------------------------------------
@@ -112,17 +114,14 @@ di (6.095294 - 5.468492)/6.095294
 
 sort sex row
 
-cdgpgsocioeconomicgrp
-cd ./5_Output/2_Desc_Tables
 
-save pay_deciles_bygender_tidy, replace
+save 5_Output/2_Desc_Tables/pay_deciles_bygender_tidy, replace
 
 *====================================
 ** Figure
 *====================================
-cdgpgsocioeconomicgrp
-cd ./5_Output/2_Desc_Tables
-use pay_deciles_bygender_tidy, clear //check
+
+use 5_Output/2_Desc_Tables/pay_deciles_bygender_tidy, clear //check
 
 list in 1/10, clean
 
@@ -145,16 +144,13 @@ twoway                            ///
     size(small) ring(1) pos(4) col(1) )  ///
  ysize(3) xsize(5.0)
 
-*Go to the figure folder
-cdgpgsocioeconomicgrp
-cd ./5_Output/4_Figures
-
-graph export "Fig1_GrossHourlyRealPayPercentiles.png", ///
+graph export "5_Output/4_Figures/Fig1_GrossHourlyRealPayPercentiles.png", ///
  replace
 
 
 ** View in browser
 view browse file:///$gpgsocioecnomicgrp/5_Output/4_Figures/Fig1_GrossHourlyRealPayPercentiles.png
 
+cd
 
 ****  End ****
