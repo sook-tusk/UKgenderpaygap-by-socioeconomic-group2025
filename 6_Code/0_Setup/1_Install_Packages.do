@@ -36,15 +36,6 @@ sysdir set PERSONAL "C:\Installed_PG\Stata18\ado\personal"
 // For more information, visit here (https://github.com/sook-tusk/Tech_Integrate_Stata_R_with_Editors) and consult the "System directory" section.
 
 *-------------------------------------
-* Define user-specific path,
-* move directories easily
-*-------------------------------------
-
-// // search workingdir
-// net describe workingdir, from(https://jslsoc.sitehost.iu.edu/stata)
-// net install workingdir
-
-*-------------------------------------
 * KOB (oaxaca decomposition)
 *-------------------------------------
 ssc install oaxaca
